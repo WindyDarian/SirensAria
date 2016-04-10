@@ -1,2 +1,2 @@
-# SirensAria
-Another game prototype under development by me, Xueyin Wan and Menglu Wang
+# Siren's Aria
+Another game prototype under development by Windy Darian (Ruoyu Fan), Xueyin Wan and Menglu Wang.

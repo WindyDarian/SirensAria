@@ -1,0 +1,46 @@
+// =============================================================================
+//
+//    Siren's Aria. A game prototype made with Unreal Engine
+//    Copyright (C) 2016  Ruoyu Fan, Xueyin Wan, Menglu Wang
+//
+//    This program is free software: you can redistribute it and/or modify
+//    it under the terms of the GNU General Public License as published by
+//    the Free Software Foundation, either version 3 of the License, or
+//    (at your option) any later version.
+//
+//    This program is distributed in the hope that it will be useful,
+//    but WITHOUT ANY WARRANTY; without even the implied warranty of
+//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//    GNU General Public License for more details.
+//
+//     You should have received a copy of the GNU General Public License
+//     along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+// =============================================================================
+//
+// Created on: Apr 10, 2016
+//
+
+using UnrealBuildTool;
+using System.Collections.Generic;
+
+public class SirensAriaTarget : TargetRules
+{
+	public SirensAriaTarget(TargetInfo Target)
+	{
+		Type = TargetType.Game;
+	}
+
+	//
+	// TargetRules interface.
+	//
+
+	public override void SetupBinaries(
+		TargetInfo Target,
+		ref List<UEBuildBinaryConfiguration> OutBuildBinaryConfigurations,
+		ref List<string> OutExtraModuleNames
+		)
+	{
+		OutExtraModuleNames.AddRange( new string[] { "SirensAria" } );
+	}
+}
