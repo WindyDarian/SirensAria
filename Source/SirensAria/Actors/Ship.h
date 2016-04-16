@@ -29,4 +29,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Movement")
 	float speed;
 	
+	UPROPERTY(Category = "Ship", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class UBoxComponent* BoxComponent;
+
+	static FName BoxComponentName;
 };

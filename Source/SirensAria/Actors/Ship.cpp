@@ -4,12 +4,17 @@
 #include "Ship.h"
 
 
+FName AShip::BoxComponentName(TEXT("ShipRootBox"));
+
 // Sets default values
 AShip::AShip()
 {
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 	speed = 500;
+
+	BoxComponent = CreateDefaultSubobject<UBoxComponent>(AShip::BoxComponentName);
+	RootComponent = BoxComponent;
 }
 
 // Called when the game starts or when spawned
