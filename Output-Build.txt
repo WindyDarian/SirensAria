@@ -1,0 +1,14 @@
+﻿1>------ Build started: Project: UE4, Configuration: BuiltWithUnrealBuildTool Win32 ------
+2>------ Build started: Project: SirensAria, Configuration: Development_Editor x64 ------
+2>  Creating makefile for hot reloading SirensAriaEditor (working set of source files changed)
+2>  Compiling game modules for hot reload
+2>  Parsing headers for SirensAriaEditor
+2>    Running UnrealHeaderTool "C:\Users\Xunyin\Documents\GitHub\SirensAria\SirensAria.uproject" "C:\Users\Xunyin\Documents\GitHub\SirensAria\Intermediate\Build\Win64\SirensAriaEditor\Development\UnrealHeaderTool.manifest" -LogCmds="loginit warning, logexit warning, logdatabase error" -Unattended -WarningsAsErrors -installed
+2>  Reflection code generated for SirensAriaEditor in 2.5787471 seconds
+2>  Performing 2 actions (4 in parallel)
+2>  Ship.cpp
+2>  [2/2] Link UE4Editor-SirensAria-7482.dll
+2>     Creating library C:\Users\Xunyin\Documents\GitHub\SirensAria\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-SirensAria-7482.lib and object C:\Users\Xunyin\Documents\GitHub\SirensAria\Intermediate\Build\Win64\UE4Editor\Development\UE4Editor-SirensAria-7482.exp
+2>  -------- End Detailed Actions Stats -----------------------------------------------------------
+2>  Total build time: 7.90 seconds
+========== Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
