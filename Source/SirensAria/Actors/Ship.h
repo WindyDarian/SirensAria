@@ -5,6 +5,8 @@
 #include "GameFramework/Pawn.h"
 #include "Ship.generated.h"
 
+class ACannon;
+
 UCLASS()
 class SIRENSARIA_API AShip : public APawn
 {
@@ -33,4 +35,9 @@ public:
 	class UBoxComponent* BoxComponent;
 
 	static FName BoxComponentName;
+
+	UPROPERTY(Category = "Ship", VisibleAnywhere, BlueprintReadOnly)
+	TArray<ACannon*> LeftCannons;
+	UPROPERTY(Category = "Ship", VisibleAnywhere, BlueprintReadOnly)
+	TArray<ACannon*> RightCannons;
 };

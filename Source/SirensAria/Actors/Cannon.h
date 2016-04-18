@@ -23,7 +23,11 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Combat")
 	void OnFire();
 	
+	UFUNCTION(BlueprintCallable, Category = "Combat")
     virtual void Fire();
+
+	UPROPERTY(EditAnywhere, Category = Projectile)
+	TSubclassOf<class AActor> ProjectileClass;
 
 
 };

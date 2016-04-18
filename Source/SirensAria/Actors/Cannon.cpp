@@ -26,6 +26,16 @@ void ACannon::Tick( float DeltaTime )
 void ACannon::Fire()
 {
 	// TODO: shoot a cannonball
+	UWorld* const World = GetWorld();
+	if (World) {
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.Owner = this;
+		SpawnParams.Instigator = Instigator;
+		auto location = GetActorLocation();
+		auto rotation = GetActorRotation();
+		World->SpawnActor<AActor>(ProjectileClass, location, rotation, SpawnParams);
+	}
+
 	OnFire();
 }
 
