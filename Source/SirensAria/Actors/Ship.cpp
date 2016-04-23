@@ -16,6 +16,9 @@ AShip::AShip()
 
 	BoxComponent = CreateDefaultSubobject<UBoxComponent>(AShip::BoxComponentName);
 	RootComponent = BoxComponent;
+
+	PlayerLocator = CreateDefaultSubobject<UArrowComponent>(FName(TEXT("ShipPlayerLocator")));
+	PlayerLocator->AttachTo(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -31,30 +34,30 @@ void AShip::Tick( float DeltaTime )
 	Super::Tick( DeltaTime );
 
 }
-
-// Called to bind functionality to input
-void AShip::SetupPlayerInputComponent(class UInputComponent* InputComponent)
-{
-	Super::SetupPlayerInputComponent(InputComponent);
-	InputComponent->BindAxis("MoveForward", this, &AShip::Move_Forward);
-	InputComponent->BindAxis("Turn", this, &AShip::Move_Turn);
-}
-
-void AShip::Move_Forward(float AxisValue)
-{
-	if (AxisValue > 0)
-	{
-		FVector actor_location = GetActorLocation();
-		FRotator new_rotation = GetActorRotation();
-		UWorld* const World = GetWorld();
-		actor_location += AxisValue * speed * World->GetDeltaSeconds() * new_rotation.Vector();	 
-		SetActorLocation(actor_location);
-	}
-}
-
-void AShip::Move_Turn(float AxisValue)
-{
-	FRotator NewRotation = GetActorRotation();
-	NewRotation.Yaw += AxisValue * 4;
-	SetActorRotation(NewRotation);
-}
+//
+//// Called to bind functionality to input
+//void AShip::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+//{
+//	Super::SetupPlayerInputComponent(InputComponent);
+//	InputComponent->BindAxis("MoveForward", this, &AShip::Move_Forward);
+//	InputComponent->BindAxis("Turn", this, &AShip::Move_Turn);
+//}
+//
+//void AShip::Move_Forward(float AxisValue)
+//{
+//	if (AxisValue > 0)
+//	{
+//		FVector actor_location = GetActorLocation();
+//		FRotator new_rotation = GetActorRotation();
+//		UWorld* const World = GetWorld();
+//		actor_location += AxisValue * speed * World->GetDeltaSeconds() * new_rotation.Vector();	 
+//		SetActorLocation(actor_location);
+//	}
+//}
+//
+//void AShip::Move_Turn(float AxisValue)
+//{
+//	FRotator NewRotation = GetActorRotation();
+//	NewRotation.Yaw += AxisValue * 4;
+//	SetActorRotation(NewRotation);
+//}

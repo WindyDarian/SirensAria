@@ -2,13 +2,13 @@
 
 #pragma once
 
-#include "GameFramework/Pawn.h"
+#include "GameFramework/Actor.h"
 #include "Ship.generated.h"
 
 class ACannon;
 
 UCLASS()
-class SIRENSARIA_API AShip : public APawn
+class SIRENSARIA_API AShip : public AActor
 {
 	GENERATED_BODY()
 
@@ -22,17 +22,19 @@ public:
 	// Called every frame
 	virtual void Tick( float DeltaSeconds ) override;
 
-	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+	//// Called to bind functionality to input
+	//virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
-	void Move_Forward(float AxisValue); 
-	void Move_Turn(float AxisValue);
+	//void Move_Forward(float AxisValue); 
+	//void Move_Turn(float AxisValue);
+
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadwrite, Category = "Movement")
 	float speed;
 	
 	UPROPERTY(Category = "Ship", VisibleAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
-	class UBoxComponent* BoxComponent;
+    UBoxComponent* BoxComponent;
 
 	static FName BoxComponentName;
 
@@ -40,4 +42,8 @@ public:
 	TArray<ACannon*> LeftCannons;
 	UPROPERTY(Category = "Ship", VisibleAnywhere, BlueprintReadOnly)
 	TArray<ACannon*> RightCannons;
+
+	UPROPERTY(Category = "Ship", VisibleAnywhere, BlueprintReadOnly)
+	UArrowComponent* PlayerLocator;
+
 };
