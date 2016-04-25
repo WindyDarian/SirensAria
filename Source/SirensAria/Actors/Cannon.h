@@ -22,12 +22,19 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Combat")
 	void OnFire();
-	
-	UFUNCTION(BlueprintCallable, Category = "Combat")
-    virtual void Fire();
+
+	UFUNCTION(BlueprintCallable, Category = "Combat", NetMulticast, Reliable)
+	virtual void Fire();
 
 	UPROPERTY(EditAnywhere, Category = Projectile)
 	TSubclassOf<class AActor> ProjectileClass;
+
+	// Get where the rounds are fired from
+	UPROPERTY(Category = "Combat", VisibleAnywhere, BlueprintReadOnly)
+	UArrowComponent* ShotLocator;
+
+	UPROPERTY(Category = "Cannon", VisibleAnywhere, BlueprintReadOnly)
+	USceneComponent* RootSceneComponent;
 
 
 };
