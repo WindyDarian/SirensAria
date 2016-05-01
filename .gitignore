@@ -35,6 +35,11 @@
 *.opensdf
 *.sdf
 
+# Debug Files
+*.pdb
+*.db
+*.opendb
+
 # Precompiled Assets
 SourceArt/**/*.png
 SourceArt/**/*.tga
@@ -56,3 +61,6 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+
+Plugins/OceanPlugin/Binaries/*
+Plugins/OceanPlugin/Intermediate/*
