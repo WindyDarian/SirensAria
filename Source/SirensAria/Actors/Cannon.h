@@ -23,8 +23,17 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Combat")
 	void OnFire();
 
-	UFUNCTION(BlueprintCallable, Category = "Combat", NetMulticast, Reliable)
+	//UFUNCTION(BlueprintCallable, Category = "Combat", NetMulticast, Reliable)
+	UFUNCTION(BlueprintCallable, Category = "Combat")
 	virtual void Fire();
+
+	// Horizontally rotate the cannon by an axis input
+	UFUNCTION(BlueprintCallable, Category = "Cannon")
+	virtual void RotateRight(float axis_input);
+
+	// Vertically rotate the cannon by an axis input
+	UFUNCTION(BlueprintCallable, Category = "Cannon")
+	virtual void RotateUp(float axis_input);
 
 	UPROPERTY(EditAnywhere, Category = Projectile)
 	TSubclassOf<class AActor> ProjectileClass;
@@ -36,5 +45,15 @@ public:
 	UPROPERTY(Category = "Cannon", VisibleAnywhere, BlueprintReadOnly)
 	USceneComponent* RootSceneComponent;
 
+	UPROPERTY(Category = "Cannon", VisibleAnywhere, BlueprintReadWrite)
+	float RotateSpeedH = 90;
 
+	UPROPERTY(Category = "Cannon", VisibleAnywhere, BlueprintReadWrite)
+	float RotateLimitH = 30;
+
+	UPROPERTY(Category = "Cannon", VisibleAnywhere, BlueprintReadWrite)
+	float RotateSpeedV = 90;
+
+	UPROPERTY(Category = "Cannon", VisibleAnywhere, BlueprintReadWrite)
+	float RotateLimitV = 30;
 };

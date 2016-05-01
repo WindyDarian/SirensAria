@@ -29,10 +29,53 @@ void ACannon::Tick( float DeltaTime )
 	Super::Tick( DeltaTime );
 }
 
-void ACannon::Fire_Implementation()
+void ACannon::RotateRight(float axis_input)
+{
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		auto delta_t = World->DeltaTimeSeconds;
+		auto rot = RootComponent->GetRelativeTransform().Rotator();;
+		
+		rot.Yaw = FMath::ClampAngle(rot.Yaw + RotateSpeedH * axis_input * delta_t, -RotateLimitH, RotateLimitH);
+		RootComponent->SetRelativeRotation(rot.Quaternion());
+	}
+}
+
+void ACannon::RotateUp(float axis_input)
+{
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		auto delta_t = World->DeltaTimeSeconds;
+		auto rot = RootComponent->GetRelativeTransform().Rotator();;
+		rot.Pitch = FMath::ClampAngle(rot.Pitch + RotateSpeedV * axis_input * delta_t, -RotateLimitV , RotateLimitV);
+		RootComponent->SetRelativeRotation(rot.Quaternion());
+	}
+}
+
+//void ACannon::Fire_Implementation()
+//{
+//	UWorld* const World = GetWorld();
+//	if (World) 
+//	{
+//		FActorSpawnParameters SpawnParams;
+//		SpawnParams.Owner = this;
+//		SpawnParams.Instigator = Instigator;
+//		//auto location = GetActorLocation();
+//		auto location = ShotLocator->GetComponentLocation();
+//		auto rotation = GetActorRotation();
+//		World->SpawnActor<AActor>(ProjectileClass, location, rotation, SpawnParams);
+//	}
+//
+//	OnFire();
+//}
+
+void ACannon::Fire()
 {
 	UWorld* const World = GetWorld();
-	if (World) {
+	if (World)
+	{
 		FActorSpawnParameters SpawnParams;
 		SpawnParams.Owner = this;
 		SpawnParams.Instigator = Instigator;
