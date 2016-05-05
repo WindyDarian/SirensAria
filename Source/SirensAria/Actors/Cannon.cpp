@@ -1,4 +1,4 @@
-// Copyright (C) 2016  Ruoyu Fan, Xueyin Wan, Menglu Wang
+﻿// Copyright (C) 2016  Ruoyu Fan, Xueyin Wan, Menglu Wang
 
 #include "SirensAria.h"
 #include "Cannon.h"
@@ -20,7 +20,7 @@ ACannon::ACannon()
 // Called when the game starts or when spawned
 void ACannon::BeginPlay()
 {
-	Super::BeginPlay();
+	Super::BeginPlay();  
 }
 
 // Called every frame
@@ -88,3 +88,23 @@ void ACannon::Fire()
 	OnFire();
 }
 
+
+FVector ACannon::AttackingArea(float speed, float gravity)
+{
+	FVector result;
+	float temp = gravity / speed / speed;
+	auto shot_trans = ShotLocator->GetComponentTransform();
+	auto pos = shot_trans.GetLocation();
+	auto forward = shot_trans.GetRotation().GetForwardVector();
+	FVector forwardInXYPlain = FVector(forward.X,forward.Y,0);
+	forwardInXYPlain=(forwardInXYPlain.SafeNormal());
+	//theta and tan(theta) in 2D
+	float theta = forward.Z / sqrt(pow(forward.X, 2) + pow(forward.Y, 2));
+	float tan = FMath::Tan(theta);
+	//distance from cannon to attacking area in 2D;
+	float temp2 = temp + temp*pow(tan, 2);
+	float distance = (-tan + sqrt(pow(tan, 2) - 2 * (-pos.Z) * temp2 )) / (-temp2);
+
+	result = FVector(forwardInXYPlain.X*distance+ pos.X, forwardInXYPlain.Y*distance+pos.Y,-pos.Z);
+	return result;
+}
