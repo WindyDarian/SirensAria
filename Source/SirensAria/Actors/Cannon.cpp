@@ -54,6 +54,18 @@ void ACannon::RotateUp(float axis_input)
 	}
 }
 
+void ACannon::PitchTo(float pitch, float speed_factor)
+{
+	UWorld* World = GetWorld();
+	if (World)
+	{
+		auto delta_t = World->DeltaTimeSeconds;
+		auto rot = RootComponent->GetRelativeTransform().Rotator();;
+		rot.Pitch = FMath::ClampAngle((pitch - rot.Pitch) * speed_factor * delta_t + rot.Pitch, -RotateLimitV, RotateLimitV);
+		RootComponent->SetRelativeRotation(rot.Quaternion());
+	}
+}
+
 //void ACannon::Fire_Implementation()
 //{
 //	UWorld* const World = GetWorld();

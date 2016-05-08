@@ -38,6 +38,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Cannon")
 	virtual void RotateUp(float axis_input);
 
+	// Vertically rotate the cannon by an axis input
+	UFUNCTION(BlueprintCallable, Category = "Cannon")
+	virtual void PitchTo(float pitch, float speed_factor = 0.1);
+
 	UPROPERTY(EditAnywhere, Category = Projectile)
 	TSubclassOf<class AActor> ProjectileClass;
 
